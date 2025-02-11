@@ -1,12 +1,14 @@
 FROM python:alpine
-RUN apk add --update --no-cache --virtual .build-deps gcc musl-dev \
-&& pip install --upgrade pip \
-&& pip install pycrypto yt-dlp \
-&& rm -rf ~/.cache/pip \
-&& apk del .build-deps \
-&& apk add ffmpeg \
-&& chmod o+w /media \
-&& adduser -D yt-dlp
+RUN apk add --update --no-cache --virtual .build-deps gcc musl-dev 
+RUN apk add --update --no-cache --virtual .build-deps ffmpeg
+RUN apk del .build-deps 
+
+RUN pip install --upgrade pip 
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN chmod o+w /media 
+RUN adduser -D yt-dlp
 COPY ./yt-dlp.conf /etc/yt-dlp.conf
 WORKDIR /media
 USER yt-dlp
