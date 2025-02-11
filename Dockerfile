@@ -14,4 +14,4 @@ WORKDIR /media
 USER yt-dlp
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
-ENTRYPOINT ["yt-dlp"]
+ENTRYPOINT ["/usr/local/bin/yt-dlp"]
