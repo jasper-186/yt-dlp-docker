@@ -4,12 +4,14 @@ RUN apk add --update --no-cache --virtual .build-deps ffmpeg
 RUN apk del .build-deps 
 
 RUN pip install --upgrade pip 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+
+
 
 RUN chmod o+w /media 
 RUN adduser -D yt-dlp
 COPY ./yt-dlp.conf /etc/yt-dlp.conf
 WORKDIR /media
-#USER yt-dlp
+USER yt-dlp
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 ENTRYPOINT ["yt-dlp"]
