@@ -11,5 +11,5 @@ RUN chmod o+w /media
 RUN adduser -D yt-dlp
 COPY ./yt-dlp.conf /etc/yt-dlp.conf
 WORKDIR /media
-USER yt-dlp
+#USER yt-dlp
 ENTRYPOINT ["yt-dlp"]
