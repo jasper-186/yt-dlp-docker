@@ -1,3 +1,1 @@
-setuptools
-pycryptodome
-yt-dlp
+yt-dlp[default]
