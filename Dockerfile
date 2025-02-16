@@ -1,11 +1,8 @@
 FROM python:alpine
-RUN apk add --update --no-cache --virtual .build-deps gcc musl-dev 
-RUN apk add --update --no-cache --virtual .build-deps ffmpeg
-RUN apk del .build-deps 
+RUN apk add --update --no-cache gcc musl-dev 
+RUN apk add --update --no-cache ffmpeg
 
 RUN pip install --upgrade pip 
-
-
 
 RUN chmod o+w /media 
 RUN adduser -D yt-dlp
