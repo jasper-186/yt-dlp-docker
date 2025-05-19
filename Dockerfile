@@ -1,6 +1,6 @@
 FROM python:alpine
 RUN apk add --update --no-cache gcc musl-dev 
-RUN apk add --update --no-cache ffmpeg ffprobe
+RUN apk add --update --no-cache ffmpeg
 
 RUN pip install --upgrade pip 
 
